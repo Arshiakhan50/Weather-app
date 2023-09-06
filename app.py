@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/predict_weather',methods=['POST'])
 def predict_weather():
@@ -59,7 +59,7 @@ def predict_weather():
             gust_mph = json_data['current']['gust_mph']
             gust_kph = json_data['current']['gust_kph']
 
-            return render_template('home.html',name=name,region=region,country=country,lat=lat,lon=lon,tz_id=tz_id,
+            return render_template('index.html',name=name,region=region,country=country,lat=lat,lon=lon,tz_id=tz_id,
             localtime_epoch=localtime_epoch,localtime=localtime,last_updated_epoch=last_updated_epoch,last_updated=last_updated,
             temp_c=temp_c,temp_f=temp_f,is_day=is_day,condition_text=condition_text,condition_icon=condition_icon,wind_mph=wind_mph,
             wind_kph=wind_kph,wind_degree=wind_degree,wind_dir=wind_dir,pressure_mb=pressure_mb,pressure_in=pressure_in,precip_mm=precip_mm,
@@ -67,7 +67,7 @@ def predict_weather():
             vis_miles=vis_miles,uv=uv,gust_mph=gust_mph,gust_kph=gust_kph)
 
         except:
-            return render_template('home.html',error='Please enter a correct Place name...')
+            return render_template('index.html',error='Please enter a correct Place name...')
 
 
 if __name__ == '__main__':
